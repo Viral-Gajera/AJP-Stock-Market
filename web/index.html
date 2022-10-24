@@ -1,15 +1,166 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- MATA TAGS -->
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+
+        <!-- TAILWIND CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- TAILWIND CDN CUSTOMIZATION -->
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#2196F3",
+                        },
+                    },
+                },
+            };
+        </script>
+
+        <!-- CUSTOM STYLE -->
+        <style type="text/tailwindcss">
+            @layer utilities {
+                ::-webkit-scrollbar {
+                    width: 0px;
+                }
+            }
+        </style>
+
+        <!-- APP TITLE -->
+        <title>Home page</title>
     </head>
-    <body>
-        <div>TODO write content</div>
+    <body
+        class="min-h-screen bg-gradient-to-bl from-gray-800 to-black text-white">
+        <!-- NAVIGATION BAR -->
+        <section>
+            <div
+                class="mx-auto flex h-16 w-11/12 items-center justify-between">
+                <!-- LEFT SECTION : LOGO -->
+                <div class="flex items-center">
+                    <span>
+                        <img
+                            class="mx-2 w-10"
+                            src="./Img/tradingview.png"
+                            alt="this is image" />
+                    </span>
+                    <span
+                        class="text-xl font-bold text-white">
+                        Trading View
+                    </span>
+                </div>
+
+                <!-- RIGHT SECTION : LINKS -->
+                <div class="mr-2 font-bold">
+                    <a
+                        class="login-btn hover:text-primary mx-2"
+                        href="#">
+                        Login
+                    </a>
+                    <a
+                        class="signUp-btn hover:text-primary mx-2"
+                        href="#">
+                        Sign up
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- HERO SECTION -->
+        <section
+            class="mt-20 flex items-center justify-center">
+            <div
+                class="flex h-96 w-5/6 flex-col items-center justify-center">
+                <!-- TEXT : Analyse.... -->
+                <div class="text-4xl italic">
+                    <span
+                        class="bg-primary m-2 inline-block skew-x-[10deg] p-2 text-6xl">
+                        Analyse
+                    </span>
+                    All Your
+                </div>
+                <div class="text-4xl italic">
+                    stock market data here
+                </div>
+                <div
+                    class="text-primary m-3 inline skew-x-[-10deg] bg-white p-3 text-7xl font-bold">
+                    Trading View
+                </div>
+            </div>
+        </section>
+
+        <!-- MARKET OVERWIEW -->
+        <section class="mt-52 mb-10 h-auto">
+            <div
+                class="mx-auto my-2 w-5/6 rounded-lg border-t bg-gradient-to-tr from-gray-800 to-black">
+                <div
+                    class="pt-5 text-center text-2xl font-bold">
+                    Market Overview
+                </div>
+                <div
+                    class="mt-8 flex items-center justify-center pb-8">
+                    <!-- CARD -->
+
+                    <!-- NIFTY 50 -->
+                    <div
+                        class="mx-2 w-52 rounded-lg bg-black p-5 text-center">
+                        <div class="">
+                            Nifty 50
+                        </div>
+                        <div class="text-2xl">
+                            17,739.13
+                        </div>
+                        <div
+                            class="text-green-500">
+                            240.80 (1.%)
+                        </div>
+                    </div>
+
+                    <!-- SENSEX -->
+                    <div
+                        class="mx-2 w-52 rounded-lg bg-black p-5 text-center">
+                        <div class="">Sensex</div>
+                        <div class="text-2xl">
+                            59,930.73
+                        </div>
+                        <div class="text-red-500">
+                            614.01 (1.03%)
+                        </div>
+                    </div>
+
+                    <!-- BANK NIFTY -->
+                    <div
+                        class="mx-2 w-52 rounded-lg bg-black p-5 text-center">
+                        <div class="">
+                            Bank Nifty
+                        </div>
+                        <div class="text-2xl">
+                            41,296.90
+                        </div>
+                        <div class="text-red-500">
+                            496.12 (1.03%)
+                        </div>
+                    </div>
+
+                    <!-- NASDAQ -->
+                    <div
+                        class="mx-2 w-52 rounded-lg bg-black p-5 text-center">
+                        <div class="">NDAQ</div>
+                        <div class="text-2xl">
+                            57.74
+                        </div>
+                        <div
+                            class="text-green-500">
+                            0.90 (1.58%)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </body>
 </html>

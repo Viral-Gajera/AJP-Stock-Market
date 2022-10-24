@@ -1,0 +1,26 @@
+{
+    "name": "ajp-stock-market",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "prettier-watch": "npx onchange \"**/*\" -- prettier --write --ignore-unknown {{changed}}"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Viral-Gajera/AJP-Stock-Market.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Viral-Gajera/AJP-Stock-Market/issues"
+    },
+    "homepage": "https://github.com/Viral-Gajera/AJP-Stock-Market#readme",
+    "devDependencies": {
+        "prettier": "^2.7.1"
+    },
+    "dependencies": {
+        "prettier-plugin-tailwindcss": "^0.1.13"
+    }
+}
