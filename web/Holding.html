@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+
+        <!-- TAILWIND CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- CONFIG JS -->
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: "#2196F3",
+                        },
+                    },
+                },
+            };
+        </script>
+
+        <!-- CUSTOM CSS -->
+        <style type="text/tailwindcss">
+            ::-webkit-scrollbar {
+                height: 5px;
+                width: 5px;
+                background-color: rgba(0, 0, 0, 0.807);
+            }
+            ::-webkit-scrollbar-track {
+                background-color: rgba(0, 0, 0, 0.807);
+            }
+            ::-webkit-scrollbar-thumb {
+                background: rgb(255, 255, 255);
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+
+    <body
+        class="min-h-screen text-white bg-gradient-to-bl from-gray-900 to-black">
+        <!-- NAVIGATION BAR -->
+        <section
+            class="sticky top-0 min-w-full border-b border-gray-700 backdrop-blur">
+            <div
+                class="flex items-center justify-between w-11/12 h-16 mx-auto">
+                <!-- LEFT SECTION : LOGO -->
+                <div class="flex items-center">
+                    <span>
+                        <a href="./dashbord.html">
+                            <img
+                                class="w-10 mx-2"
+                                src="./Img/tradingview.png"
+                                alt="this is image" />
+                        </a>
+                    </span>
+                    <span
+                        class="text-xl font-bold text-white">
+                        Trading View
+                    </span>
+                </div>
+
+                <!-- RIGHT SECTION : LINKS -->
+                <div class="mr-2 font-bold">
+                    <a
+                        href="./dashbord.html"
+                        class="mx-2 text-xs"
+                        >Back</a
+                    >
+                </div>
+            </div>
+        </section>
+
+    </body>
+</html>
