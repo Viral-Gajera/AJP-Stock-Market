@@ -72,7 +72,7 @@
 
                 <!-- FORM -->
                 <form
-                    action=""
+                    action="authentication.jsp"
                     class="flex flex-col items-center justify-center">
 
                     <!-- EMAIL ADDRESS FIELD -->
@@ -90,10 +90,11 @@
                             /></span>
                             <input
                                 class="inline w-56 mt-2 bg-transparent outline-none"
-                                type="text"
+                                type="email"
                                 placeholder="Type user name is here"
-                                name=""
-                                id="" />
+                                name="email"
+                                id=""
+                                required />
                         </div>
                     </div>
 
@@ -114,19 +115,20 @@
                                 class="inline w-56 mt-2 bg-transparent outline-none"
                                 type="password"
                                 placeholder="Type password is here"
-                                name=""
-                                id="" />
+                                name="password"
+                                id="" 
+                                required />
                         </div>
                     </div>
 
                     <!-- LOGIN BUTTON -->
                     <div class="mt-12">
-                        <a href="./dashbord.html">
+                        <label for="login" >
                         <div
                             class="py-2 font-bold rounded-full bg-primary px-28">
-                            Login
+                            <input type="submit" value="Login" id="login" >
                         </div>
-                    </a>
+                    </label>
                     </div>
 
                     <!-- OR SIGN UP -->
@@ -134,7 +136,7 @@
                         Or
                         <span class="text-primary"
                             ><a
-                                href="./signUp.html"
+                                href="./signUp.jsp"
                                 >Sign Up</a
                             ></span
                         >

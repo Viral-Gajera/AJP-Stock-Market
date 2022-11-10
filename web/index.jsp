@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,6 +39,18 @@
 
     <body
         class="min-h-screen text-white bg-gradient-to-bl from-gray-900 to-black">
+        
+        <!-- DATABASE ACCESS -->
+        <%@page import="java.sql.*" %>
+        <%
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection =
+                DriverManager.getConnection("jdbc:mysql://localhost:3306/ajp","root","");
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("select * from stock");
+        %>
+        
+        
         <!-- NAVIGATION BAR -->
         <section>
             <div
@@ -62,12 +75,12 @@
                 <div class="mr-2 font-bold">
                     <a
                         class="mx-2 login-btn hover:text-primary"
-                        href="./login.html">
+                        href="./login.jsp">
                         Login
                     </a>
                     <a
                         class="mx-2 signUp-btn hover:text-primary"
-                        href="./signUp.html">
+                        href="./signUp.jsp">
                         Sign up
                     </a>
                 </div>
@@ -113,10 +126,15 @@
                     <div
                         class="p-5 m-2 text-center bg-black border border-black rounded-lg w-52 hover:border-white">
                         <div class="">
-                            Nifty 50
+                            <%
+                                rs.next();
+                                out.println(rs.getString(2));
+                            %>
                         </div>
                         <div class="text-2xl">
-                            17,739.13
+                            <%
+                                out.println(rs.getFloat(3));
+                            %>
                         </div>
                         <div
                             class="text-green-500">
@@ -127,9 +145,16 @@
                     <!-- SENSEX -->
                     <div
                         class="p-5 m-2 text-center bg-black border border-black rounded-lg w-52 hover:border-white">
-                        <div class="">Sensex</div>
+                        <div class="">
+                            <%
+                                rs.next();
+                                out.println(rs.getString(2));
+                            %>
+                        </div>
                         <div class="text-2xl">
-                            59,930.73
+                            <%
+                                out.println(rs.getFloat(3));
+                            %>
                         </div>
                         <div class="text-red-500">
                             614.01 (1.03%)
@@ -140,22 +165,34 @@
                     <div
                         class="p-5 m-2 text-center bg-black border border-black rounded-lg w-52 hover:border-white">
                         <div class="">
-                            Bank Nifty
+                            <%
+                                rs.next();
+                                out.println(rs.getString(2));
+                            %>
                         </div>
                         <div class="text-2xl">
-                            41,296.90
+                            <%
+                                out.println(rs.getFloat(3));
+                            %>
                         </div>
                         <div class="text-red-500">
                             496.12 (1.03%)
                         </div>
                     </div>
 
-                    <!-- NASDAQ -->
+                    <!-- NIFTY 500 -->
                     <div
                         class="p-5 m-2 text-center bg-black border border-black rounded-lg w-52 hover:border-white">
-                        <div class="">NDAQ</div>
+                        <div class="">
+                            <%
+                                rs.next();
+                                out.println(rs.getString(2));
+                            %>
+                        </div>
                         <div class="text-2xl">
-                            57.74
+                            <%
+                                out.println(rs.getFloat(3));
+                            %>
                         </div>
                         <div
                             class="text-green-500">

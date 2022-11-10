@@ -71,7 +71,7 @@
 
                 <!-- FORM -->
                 <form
-                    action=""
+                    action="saveUser.jsp"
                     class="flex flex-col items-center justify-center">
                     <!-- GRID CONTAINER -->
                     <div class="grid grid-cols-2">
@@ -96,8 +96,9 @@
                                         class="inline w-56 mt-2 bg-transparent outline-none"
                                         type="text"
                                         placeholder="Type user name is here"
-                                        name=""
-                                        id="" />
+                                        name="first_name"
+                                        id="" 
+                                        required />
                                 </div>
                             </div>
                             <!-- ACCOUNT NO -->
@@ -119,8 +120,9 @@
                                         class="inline mt-2 bg-transparent outline-none"
                                         type="text"
                                         placeholder="Type password is here"
-                                        name=""
-                                        id="" />
+                                        name="account_no"
+                                        id=""
+                                        required />
                                 </div>
                             </div>
 
@@ -143,8 +145,9 @@
                                         class="inline mt-2 bg-transparent outline-none"
                                         type="text"
                                         placeholder="Type password is here"
-                                        name=""
-                                        id="" />
+                                        name="pan_no"
+                                        id="" 
+                                        required />
                                 </div>
                             </div>
                         </div>
@@ -170,8 +173,9 @@
                                         class="inline mt-2 bg-transparent outline-none"
                                         type="text"
                                         placeholder="Type user name is here"
-                                        name=""
-                                        id="" />
+                                        name="last_name"
+                                        id=""
+                                        required />
                                 </div>
                             </div>
                             <!-- EMAIL ADDRESS -->
@@ -193,8 +197,9 @@
                                         class="inline mt-2 bg-transparent outline-none"
                                         type="email"
                                         placeholder="Type password is here"
-                                        name=""
-                                        id="" />
+                                        name="email"
+                                        id="" 
+                                        required/>
                                 </div>
                             </div>
                             <!-- PASSWORD -->
@@ -216,20 +221,21 @@
                                         class="inline mt-2 bg-transparent outline-none"
                                         type="password"
                                         placeholder="Type password is here"
-                                        name=""
-                                        id="" />
+                                        name="password"
+                                        id="" 
+                                        required/>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="mt-12">
-                        <a href="./login.html">
+                        <label for="signUp" >
                         <div
                             class="px-20 py-2 rounded-full bg-primary">
-                            Sign Up
+                            <input type="submit" value="Sign Up" itemref="signUp" >
                         </div>
-                    </a>
+                    </label>
                     </div>
                 </form>
             </div>
