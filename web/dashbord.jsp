@@ -9,6 +9,9 @@
         <!-- TAILWIND CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
 
+        <!-- rupee symbol -->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
         <!-- CONFIG JS -->
         <script>
             tailwind.config = {
@@ -93,14 +96,14 @@
                         <div
                             class="flex justify-between px-8 py-3 mt-8 bg-gray-800 rounded-lg mx-7">
                             <div>
-                                <div>₹0</div>
+                                <div><i class="fa fa-inr"></i> 123</div>
                                 <div>
                                     Total&nbsp;Returns
                                 </div>
                             </div>
                             <div
                                 class="flex flex-col items-end">
-                                <div>₹0</div>
+                                <div><i class="fa fa-inr"></i></div>
                                 <div>
                                     Current&nbsp;value
                                 </div>
@@ -350,7 +353,7 @@
                                             <button class="px-3 py-1 mx-1 rounded bg-primary" data-symbol="Vodaphone idea" >Buy</button>
                                             <button class="px-3 py-1 mx-1 bg-red-500 rounded" data-symbol="Vodaphone idea" >Sell</button>
                                         </div>
-                                        <div>₹8.65</div>
+                                        <div><i class="fa fa-inr"></i>8.65</div>
                                     </div>
                                 </a>
 
@@ -376,31 +379,31 @@
                                 <a href="">
                                     <div class="flex justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
                                         <div>Vodaphone idea</div>
-                                        <div>₹8.65</div>
+                                        <div><i class="fa fa-inr"></i>8.65</div>
                                     </div>
                                 </a>
                                 <a href="">
                                     <div class="flex justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
                                         <div>Vodaphone idea</div>
-                                        <div>₹8.65</div>
+                                        <div><i class="fa fa-inr"></i>8.65</div>
                                     </div>
                                 </a>
                                 <a href="">
                                     <div class="flex justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
                                         <div>Vodaphone idea</div>
-                                        <div>₹8.65</div>
+                                        <div><i class="fa fa-inr"></i>8.65</div>
                                     </div>
                                 </a>
                                 <a href="">
                                     <div class="flex justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
                                         <div>Vodaphone idea</div>
-                                        <div>₹8.65</div>
+                                        <div><i class="fa fa-inr"></i>8.65</div>
                                     </div>
                                 </a>
                                 <a href="">
                                     <div class="flex justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
                                         <div>Vodaphone idea</div>
-                                        <div>₹8.65</div>
+                                        <div><i class="fa fa-inr"></i>8.65</div>
                                     </div>
                                 </a>
 
@@ -430,7 +433,7 @@
                     <div class="flex items-center justify-center gap-x-4" >
                         <div class="flex flex-col items-center" >
                             <div>Price</div>
-                            <div class="p-1 font-bold" >₹8.65</div>
+                            <div class="p-1 font-bold" ><i class="fa fa-inr"></i>8.65</div>
                             
                         </div>
                         <div>
@@ -446,7 +449,7 @@
                         </div>
                         <div class="flex flex-col items-center" >
                             <div>Order Total</div>
-                            <div class="p-1 font-bold" >₹8.65</div>
+                            <div class="p-1 font-bold" ><i class="fa fa-inr"></i>8.65</div>
                         </div>
                     </div>
                 </div>
@@ -476,7 +479,7 @@
                     <div class="flex items-center justify-center gap-x-4" >
                         <div class="flex flex-col items-center" >
                             <div>Price</div>
-                            <div class="p-1 font-bold" >₹8.65</div>
+                            <div class="p-1 font-bold" ><i class="fa fa-inr"></i>8.65</div>
                             
                         </div>
                         <div>
