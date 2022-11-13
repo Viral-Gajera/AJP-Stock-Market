@@ -44,7 +44,7 @@
 
                             <img
                             class="w-10 mx-2"
-                            src="./Img/tradingview.png"
+                            src="./img/tradingview.png"
                             alt="" />
                         </a>
                     </span>

@@ -9,8 +9,9 @@
         <!-- TAILWIND CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
 
-        <!-- rupee symbol -->
+        <!-- FONT-AWESOME CND -->
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        
 
         <!-- CONFIG JS -->
         <script>
@@ -44,9 +45,25 @@
 
     <body
         class="min-h-screen text-white bg-gradient-to-bl from-gray-900 via-black to-black">
+
+        <%@page import="java.sql.*" %>
+        <%
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection =
+                DriverManager.getConnection("jdbc:mysql://localhost:3306/ajp","root","");
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("select * from stock");
+
+           int USER_ID = Integer.parseInt( request.getParameter("user_id") );
+        %>
+
+        <div class="hidden" id="user_id" >
+            <% out.println(USER_ID); %>
+        </div>
+
         <!-- NAVIGATION BAR -->
         <section
-            class="sticky top-0 min-w-full border-b border-gray-700 backdrop-blur">
+            class="sticky top-0 z-10 min-w-full border-b border-gray-700 backdrop-blur">
             <div
                 class="flex items-center justify-between w-11/12 h-16 mx-auto">
                 <!-- LEFT SECTION : LOGO -->
@@ -55,7 +72,7 @@
                         <a href="./dashbord.html">
                             <img
                                 class="w-10 mx-2"
-                                src="./Img/tradingview.png"
+                                src="./img/tradingview.png"
                                 alt="" />
                         </a>
                     </span>
@@ -68,14 +85,10 @@
                 <!-- RIGHT SECTION : LINKS -->
                 <div class="mr-2 font-bold">
                     <a
-                        href="./Holding.html"
+                        href="./Holding.jsp"
                         class="mx-2 text-xs"
+                        id="holdings-links"
                         >Holdings</a
-                    >
-                    <a
-                        href="./OrderHistory.html"
-                        class="mx-2 text-xs"
-                        >Order History</a
                     >
                 </div>
             </div>
@@ -96,16 +109,35 @@
                         <div
                             class="flex justify-between px-8 py-3 mt-8 bg-gray-800 rounded-lg mx-7">
                             <div>
-                                <div><i class="fa fa-inr"></i> 123</div>
+                                <div><i class="fa fa-inr"></i> 0</div>
                                 <div>
                                     Total&nbsp;Returns
                                 </div>
                             </div>
                             <div
                                 class="flex flex-col items-end">
-                                <div><i class="fa fa-inr"></i></div>
                                 <div>
-                                    Current&nbsp;value
+                                    <i class="fa fa-inr"></i> <%
+                                        Statement st1 = connection.createStatement();
+                                        ResultSet rs1 = st1.executeQuery("select * from holdings where user_id=" + USER_ID);
+
+                                        float Total = 0;
+
+                                        while(rs1.next()){
+                                            int quantity = rs1.getInt("quantity");
+                                            int STOCK_ID = rs1.getInt("stock_id");
+                                            Statement st2 = connection.createStatement();
+                                            ResultSet rs2 = st2.executeQuery("select * from stock where stock_id=" + STOCK_ID );
+                                            rs2.next();
+                                            float price = rs2.getFloat("LTP");
+                                            Total += ( quantity * price );
+                                        }
+
+                                        out.println(Total);
+                                    %>
+                                </div>
+                                <div>
+                                    Total&nbsp;Invested
                                 </div>
                             </div>
                         </div>
@@ -122,16 +154,20 @@
                         </div>
                         <div
                             class="flex py-3 pl-5 overflow-x-auto">
-                            <!-- CARD -->
                             <!-- NIFTY 50 -->
                             <div
                                 class="m-2 w-52 min-w-[200px] rounded-lg border border-gray-800 bg-gray-800 p-5 text-center text-xs hover:border-white">
                                 <div class="">
-                                    Nifty 50
+                                    <%
+                                        rs.next();
+                                        out.println(rs.getString(2));
+                                    %>
                                 </div>
                                 <div
                                     class="text-lg">
-                                    17,739.13
+                                    <%
+                                        out.println(rs.getFloat(3));
+                                    %>
                                 </div>
                                 <div
                                     class="text-green-500">
@@ -142,11 +178,16 @@
                             <div
                                 class="m-2 w-52 min-w-[200px] rounded-lg border border-gray-800 bg-gray-800 p-5 text-center text-xs hover:border-white">
                                 <div class="">
-                                    Sensex
+                                    <%
+                                        rs.next();
+                                        out.println(rs.getString(2));
+                                    %>
                                 </div>
                                 <div
                                     class="text-lg">
-                                    60,993.69
+                                    <%
+                                        out.println(rs.getFloat(3));
+                                    %>
                                 </div>
                                 <div
                                     class="text-red-500">
@@ -157,11 +198,37 @@
                             <div
                                 class="m-2 w-52 min-w-[200px] rounded-lg border border-gray-800 bg-gray-800 p-5 text-center text-xs hover:border-white">
                                 <div class="">
-                                    Bank Nifty
+                                    <%
+                                        rs.next();
+                                        out.println(rs.getString(2));
+                                    %>
                                 </div>
                                 <div
                                     class="text-lg">
-                                    41,305.50
+                                    <%
+                                        out.println(rs.getFloat(3));
+                                    %>
+                                </div>
+                                <div
+                                    class="text-green-500">
+                                    7.65 (0.03%)
+                                </div>
+                            </div>
+
+                            <!-- NIFTY 500 -->
+                            <div
+                                class="m-2 w-52 min-w-[200px] rounded-lg border border-gray-800 bg-gray-800 p-5 text-center text-xs hover:border-white">
+                                <div class="">
+                                    <%
+                                        rs.next();
+                                        out.println(rs.getString(2));
+                                    %>
+                                </div>
+                                <div
+                                    class="text-lg">
+                                    <%
+                                        out.println(rs.getFloat(3));
+                                    %>
                                 </div>
                                 <div
                                     class="text-green-500">
@@ -345,17 +412,141 @@
 
                         <!-- WATCHLIST STOCK -->
                         <div class="mt-5 watchlist-stock" >
-                            <div class="overflow-auto rounded-lg mx-9" >
-                                <a href="#" class="group" >
+                            <div class="overflow-auto rounded-lg mx-9">
+
+                                
+                                <div href="#" class="group" >
                                     <div class="flex items-center justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
-                                        <div>Vodaphone idea</div>
-                                        <div class="hidden group-hover:inline-block" >
-                                            <button class="px-3 py-1 mx-1 rounded bg-primary" data-symbol="Vodaphone idea" >Buy</button>
-                                            <button class="px-3 py-1 mx-1 bg-red-500 rounded" data-symbol="Vodaphone idea" >Sell</button>
+                                        <div>                            
+                                            <%
+                                                rs.next();
+                                                out.println(rs.getString(2));
+                                            %>
                                         </div>
-                                        <div><i class="fa fa-inr"></i>8.65</div>
+                                        <div class="hidden group-hover:inline-block">
+                                            <button class="px-3 py-1 mx-1 rounded bg-primary">Buy</button>
+                                            <button class="px-3 py-1 mx-1 bg-red-500 rounded">Sell</button>
+                                            <div class="hidden" >
+                                                <% out.println(rs.getInt(1)); %>
+                                            </div>
+                                        </div>
+                                        <div><i class="fa fa-inr"></i>
+                                            <%
+                                                out.println(rs.getFloat(3));
+                                            %>
+                                        </div>
                                     </div>
-                                </a>
+                                </div>
+                                <div href="#" class="group" >
+                                    <div class="flex items-center justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
+                                        <div>                            
+                                            <%
+                                                rs.next();
+                                                out.println(rs.getString(2));
+                                            %>
+                                        </div>
+                                        <div class="hidden group-hover:inline-block">
+                                            <button class="px-3 py-1 mx-1 rounded bg-primary">Buy</button>
+                                            <button class="px-3 py-1 mx-1 bg-red-500 rounded">Sell</button>
+                                            <div class="hidden" >
+                                                <% out.println(rs.getInt(1)); %>
+                                            </div>
+                                        </div>
+                                        <div><i class="fa fa-inr"></i>
+                                            <%
+                                                out.println(rs.getFloat(3));
+                                            %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div href="#" class="group" >
+                                    <div class="flex items-center justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
+                                        <div>                            
+                                            <%
+                                                rs.next();
+                                                out.println(rs.getString(2));
+                                            %>
+                                        </div>
+                                        <div class="hidden group-hover:inline-block">
+                                            <button class="px-3 py-1 mx-1 rounded bg-primary">Buy</button>
+                                            <button class="px-3 py-1 mx-1 bg-red-500 rounded">Sell</button>
+                                            <div class="hidden" >
+                                                <% out.println(rs.getInt(1)); %>
+                                            </div>
+                                        </div>
+                                        <div><i class="fa fa-inr"></i>
+                                            <%
+                                                out.println(rs.getFloat(3));
+                                            %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div href="#" class="group" >
+                                    <div class="flex items-center justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
+                                        <div>                            
+                                            <%
+                                                rs.next();
+                                                out.println(rs.getString(2));
+                                            %>
+                                        </div>
+                                        <div class="hidden group-hover:inline-block">
+                                            <button class="px-3 py-1 mx-1 rounded bg-primary">Buy</button>
+                                            <button class="px-3 py-1 mx-1 bg-red-500 rounded">Sell</button>
+                                            <div class="hidden" >
+                                                <% out.println(rs.getInt(1)); %>
+                                            </div>
+                                        </div>
+                                        <div><i class="fa fa-inr"></i>
+                                            <%
+                                                out.println(rs.getFloat(3));
+                                            %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div href="#" class="group" >
+                                    <div class="flex items-center justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
+                                        <div>                            
+                                            <%
+                                                rs.next();
+                                                out.println(rs.getString(2));
+                                            %>
+                                        </div>
+                                        <div class="hidden group-hover:inline-block">
+                                            <button class="px-3 py-1 mx-1 rounded bg-primary">Buy</button>
+                                            <button class="px-3 py-1 mx-1 bg-red-500 rounded">Sell</button>
+                                            <div class="hidden" >
+                                                <% out.println(rs.getInt(1)); %>
+                                            </div>
+                                        </div>
+                                        <div><i class="fa fa-inr"></i>
+                                            <%
+                                                out.println(rs.getFloat(3));
+                                            %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div href="#" class="group" >
+                                    <div class="flex items-center justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
+                                        <div>                            
+                                            <%
+                                                rs.next();
+                                                out.println(rs.getString(2));
+                                            %>
+                                        </div>
+                                        <div class="hidden group-hover:inline-block">
+                                            <button class="px-3 py-1 mx-1 rounded bg-primary">Buy</button>
+                                            <button class="px-3 py-1 mx-1 bg-red-500 rounded">Sell</button>
+                                            <div class="hidden" >
+                                                <% out.println(rs.getInt(1)); %>
+                                            </div>
+                                        </div>
+                                        <div><i class="fa fa-inr"></i>
+                                            <%
+                                                out.println(rs.getFloat(3));
+                                            %>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -379,36 +570,33 @@
                                 <a href="">
                                     <div class="flex justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
                                         <div>Vodaphone idea</div>
-                                        <div><i class="fa fa-inr"></i>8.65</div>
+                                        <div><i class="fa fa-inr"></i> 8.65</div>
                                     </div>
                                 </a>
                                 <a href="">
                                     <div class="flex justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
-                                        <div>Vodaphone idea</div>
-                                        <div><i class="fa fa-inr"></i>8.65</div>
+                                        <div>DCX System</div>
+                                        <div><i class="fa fa-inr"></i> 308.45</div>
                                     </div>
                                 </a>
                                 <a href="">
                                     <div class="flex justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
-                                        <div>Vodaphone idea</div>
-                                        <div><i class="fa fa-inr"></i>8.65</div>
+                                        <div>Reliance Industry</div>
+                                        <div><i class="fa fa-inr"></i> 2631.80</div>
                                     </div>
                                 </a>
                                 <a href="">
                                     <div class="flex justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
-                                        <div>Vodaphone idea</div>
-                                        <div><i class="fa fa-inr"></i>8.65</div>
+                                        <div>West Coast Paper Mils</div>
+                                        <div><i class="fa fa-inr"></i> 583.30</div>
                                     </div>
                                 </a>
                                 <a href="">
                                     <div class="flex justify-between px-5 py-4 bg-gray-800 border-b border-gray-500 hover:bg-gray-600" >
-                                        <div>Vodaphone idea</div>
-                                        <div><i class="fa fa-inr"></i>8.65</div>
+                                        <div>ABB India</div>
+                                        <div><i class="fa fa-inr"></i> 3155.85</div>
                                     </div>
                                 </a>
-
-
-                                
                             </div>
 
                         </div>
@@ -417,136 +605,33 @@
                 </div>
             </div>
         </section>
-
-        <!-- BUY SECTION -->
-        <section class="fixed top-0 left-0 items-center justify-center hidden w-full h-full bg-transparent buy-section backdrop-blur-sm" >
-            <!-- MAIN -->
-            <div class="overflow-hidden rounded-md w-96" >
-
-                <!-- HEADER -->
-                <div class="px-5 py-3 font-bold bg-primary" >
-                    Buy <span>Vodaphone idea</span>
-                </div>
-
-                <!-- BODY -->
-                <div class="flex flex-col justify-center pt-8 text-black bg-white" >
-                    <div class="flex items-center justify-center gap-x-4" >
-                        <div class="flex flex-col items-center" >
-                            <div>Price</div>
-                            <div class="p-1 font-bold" ><i class="fa fa-inr"></i>8.65</div>
-                            
-                        </div>
-                        <div>
-                            X
-                        </div>
-                        <div class="flex flex-col items-center" >
-                            <div>Quantity</div>
-                            <div><input class="w-16 p-1 border-b border-gray-900 outline-none" type="number" name="" value="1" id=""></div>
-                            
-                        </div>
-                        <div>
-                            =
-                        </div>
-                        <div class="flex flex-col items-center" >
-                            <div>Order Total</div>
-                            <div class="p-1 font-bold" ><i class="fa fa-inr"></i>8.65</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FOOTER -->
-                <div class="py-8 font-bold text-white bg-white" > 
-                    <div class="flex justify-center" >
-                        <button class="px-6 py-2 mx-2 rounded bg-primary" id="buy-section-buy" >Buy</button>
-                        <button class="px-6 py-2 mx-2 bg-gray-500 rounded" id="buy-section-cancel" >Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SELL SECTION -->
-        <section class="fixed top-0 left-0 items-center justify-center hidden w-full h-full bg-transparent sell-section backdrop-blur-sm" >
-            <!-- MAIN -->
-            <div class="overflow-hidden rounded-md w-96" >
-
-                <!-- HEADER -->
-                <div class="px-5 py-3 font-bold bg-red-500" >
-                    Sell <span>Vodaphone idea</span>
-                </div>
-
-                <!-- BODY -->
-                <div class="flex flex-col justify-center pt-8 text-black bg-white" >
-                    <div class="flex items-center justify-center gap-x-4" >
-                        <div class="flex flex-col items-center" >
-                            <div>Price</div>
-                            <div class="p-1 font-bold" ><i class="fa fa-inr"></i>8.65</div>
-                            
-                        </div>
-                        <div>
-                            X
-                        </div>
-                        <div class="flex flex-col items-center" >
-                            <div>Quantity</div>
-                            <div><input class="w-16 p-1 border-b border-gray-900 outline-none" type="number" name="" value="1" id=""></div>
-                            
-                        </div>
-                        <div>
-                            =
-                        </div>
-                        <div class="flex flex-col items-center" >
-                            <div>Order Total</div>
-                            <div class="p-1 font-bold" >₹8.65</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FOOTER -->
-                <div class="py-8 font-bold text-white bg-white" > 
-                    <div class="flex justify-center" >
-                        <button class="px-6 py-2 mx-2 bg-red-500 rounded" id="sell-section-sell" >Sell</button>
-                        <button class="px-6 py-2 mx-2 bg-gray-500 rounded" id="sell-section-cancel" >Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- LOGIC -->
+        
         <script>
-            let watchlist_stock = document.querySelector('.watchlist-stock'); 
-            let buy_section = document.querySelector(".buy-section");
-            let sell_section = document.querySelector(".sell-section");
+            let user_id = Number(document.getElementById('user_id').innerHTML);
+            let holdings_links = document.getElementById("holdings-links");
+            holdings_links.href = "Holding.jsp?user_id="+user_id;
 
-            let buy_section_buy = document.getElementById("buy-section-buy");
-            let buy_section_cancel = document.getElementById("buy-section-cancel");
-            let sell_section_sell = document.getElementById("sell-section-sell");
-            let sell_section_cancel = document.getElementById("sell-section-cancel");
+            let watchlist_stock = document.querySelector('.watchlist-stock'); 
 
             watchlist_stock.addEventListener('click', function(event){
                 if (event.target.innerHTML === "Buy"){
-                    buy_section.classList.remove("hidden");
-                    buy_section.classList.add("flex");
+                    let stock_id = Number(event.target.parentElement.children[2].innerHTML);
+                    let URL = "buy.jsp?user_id=" + user_id + "&stock_id=" + stock_id;
+                    console.log(user_id);
+                    console.log(stock_id);
+                    console.log(URL);
+                    window.location.href=URL;
                 }
                 if (event.target.innerHTML === "Sell"){
-                    sell_section.classList.remove("hidden");
-                    sell_section.classList.add("flex");
+                    let stock_id = Number(event.target.parentElement.children[2].innerHTML);
+                    let URL = "sell.jsp?user_id=" + user_id + "&stock_id=" + stock_id;
+                    console.log(user_id);
+                    console.log(stock_id);
+                    console.log(URL);
+                    window.location.href=URL;
                 }
             });
-
-            function hideBuy(){
-                buy_section.classList.remove("flex");
-                buy_section.classList.add("hidden");
-            }
-            function hideSell(){
-                sell_section.classList.remove("flex");
-                sell_section.classList.add("hidden");
-            }
-
-            buy_section_buy.addEventListener("click", hideBuy);
-            buy_section_cancel.addEventListener("click", hideBuy);
-            sell_section_sell.addEventListener("click", hideSell);
-            sell_section_cancel.addEventListener("click", hideSell);
-            
         </script>
+
     </body>
 </html>

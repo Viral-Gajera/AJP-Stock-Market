@@ -1,0 +1,132 @@
+        <!-- BUY SECTION -->
+        <section class="fixed top-0 left-0 items-center justify-center hidden w-full h-full bg-transparent buy-section backdrop-blur-sm" >
+            <!-- MAIN -->
+            <div class="overflow-hidden rounded-md w-96" >
+
+                <!-- HEADER -->
+                <div class="px-5 py-3 font-bold bg-primary" >
+                    Buy <span>Vodaphone idea</span>
+                </div>
+
+                <!-- BODY -->
+                <div class="flex flex-col justify-center pt-8 text-black bg-white" >
+                    <div class="flex items-center justify-center gap-x-4" >
+                        <div class="flex flex-col items-center" >
+                            <div>Price</div>
+                            <div class="p-1 font-bold" >$8.65</div>
+                            
+                        </div>
+                        <div>
+                            X
+                        </div>
+                        <div class="flex flex-col items-center" >
+                            <div>Quantity</div>
+                            <div><input class="w-16 p-1 border-b border-gray-900 outline-none" type="number" name="" value="1" id=""></div>
+                            
+                        </div>
+                        <div>
+                            =
+                        </div>
+                        <div class="flex flex-col items-center" >
+                            <div>Order Total</div>
+                            <div class="p-1 font-bold" >$8.65</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOOTER -->
+                <div class="py-8 font-bold text-white bg-white" > 
+                    <div class="flex justify-center" >
+                        <button class="px-6 py-2 mx-2 rounded bg-primary" id="buy-section-buy" >Buy</button>
+                        <button class="px-6 py-2 mx-2 bg-gray-500 rounded" id="buy-section-cancel" >Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SELL SECTION -->
+        <section class="fixed top-0 left-0 items-center justify-center hidden w-full h-full bg-transparent sell-section backdrop-blur-sm" >
+            <!-- MAIN -->
+            <div class="overflow-hidden rounded-md w-96" >
+
+                <!-- HEADER -->
+                <div class="px-5 py-3 font-bold bg-red-500" >
+                    Sell <span>Vodaphone idea</span>
+                </div>
+
+                <!-- BODY -->
+                <div class="flex flex-col justify-center pt-8 text-black bg-white" >
+                    <div class="flex items-center justify-center gap-x-4" >
+                        <div class="flex flex-col items-center" >
+                            <div>Price</div>
+                            <div class="p-1 font-bold" >$8.65</div>
+                            
+                        </div>
+                        <div>
+                            X
+                        </div>
+                        <div class="flex flex-col items-center" >
+                            <div>Quantity</div>
+                            <div><input class="w-16 p-1 border-b border-gray-900 outline-none" type="number" name="" value="1" id=""></div>
+                            
+                        </div>
+                        <div>
+                            =
+                        </div>
+                        <div class="flex flex-col items-center" >
+                            <div>Order Total</div>
+                            <div class="p-1 font-bold" >₹8.65</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOOTER -->
+                <div class="py-8 font-bold text-white bg-white" > 
+                    <div class="flex justify-center" >
+                        <button class="px-6 py-2 mx-2 bg-red-500 rounded" id="sell-section-sell" >Sell</button>
+                        <button class="px-6 py-2 mx-2 bg-gray-500 rounded" id="sell-section-cancel" >Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- LOGIC -->
+        <script>
+            let watchlist_stock = document.querySelector('.watchlist-stock'); 
+            let buy_section = document.querySelector(".buy-section");
+            let sell_section = document.querySelector(".sell-section");
+
+            let buy_section_buy = document.getElementById("buy-section-buy");
+            let buy_section_cancel = document.getElementById("buy-section-cancel");
+            let sell_section_sell = document.getElementById("sell-section-sell");
+            let sell_section_cancel = document.getElementById("sell-section-cancel");
+
+            watchlist_stock.addEventListener('click', function(event){
+                if (event.target.innerHTML === "Buy"){
+                    let parentMain = event.target.parentElement.parentElement;
+                    buy_section.classList.remove("hidden");
+                    buy_section.classList.add("flex");
+                }
+                if (event.target.innerHTML === "Sell"){
+                    let parentMain = event.target.parentElement.parentElement;
+                    sell_section.classList.remove("hidden");
+                    sell_section.classList.add("flex");
+                }
+            });
+
+            function hideBuy(){
+                buy_section.classList.remove("flex");
+                buy_section.classList.add("hidden");
+            }
+            function hideSell(){
+                sell_section.classList.remove("flex");
+                sell_section.classList.add("hidden");
+            }
+
+            buy_section_buy.addEventListener("click", hideBuy);
+            buy_section_cancel.addEventListener("click", hideBuy);
+            sell_section_sell.addEventListener("click", hideSell);
+            sell_section_cancel.addEventListener("click", hideSell);
+            
+        </script>
