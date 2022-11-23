@@ -1,8 +1,5 @@
 ## AJP Stock Market
 
--   Open folder in vs code and Run **live server**.  
--   Running project with netbeans will not show **images**.
-
 #### Home Page
 
 ![](https://github.com/Viral-Gajera/AJP-Stock-Market/blob/master/ReadMe%20Images/Screenshot%202022-11-02%20174932.png?raw=true)
