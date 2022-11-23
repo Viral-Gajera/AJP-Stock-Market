@@ -69,7 +69,7 @@
                 <!-- LEFT SECTION : LOGO -->
                 <div class="flex items-center">
                     <span>
-                        <a href="./dashbord.html">
+                        <a href="#">
                             <img
                                 class="w-10 mx-2"
                                 src="./img/tradingview.png"

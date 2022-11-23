@@ -58,7 +58,7 @@
                 <!-- LEFT SECTION : LOGO -->
                 <div class="flex items-center">
                     <span>
-                        <a href="./index.html">
+                        <a href="./index.jsp">
                             <img
                             class="w-10 mx-2"
                             src="./img/tradingview.png"
